@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="POST">
+        {% csrf_token %}
+<h1>What mathamatical operatio u want to perform select below</h1>
+        <select name="opera" class="form-check-inline" >
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="%">%</option>
+            <option value="/">/</option>
+        </select>
+
+        {{ calc }}
+
+       
+
+        <button> submit</button>
+        <input type="text" placeholder="{{ans}}and{{ans2}}" > <i></i> 
+        <h1>hello</h1>
+    </form>
+  
+</body>
+</html>
