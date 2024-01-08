@@ -32,6 +32,7 @@ def evenoff(request):
             
 
 def calculator(request):
+    
     fun = calculate()
     ans = 0
     ans2 = 0
@@ -82,48 +83,75 @@ def calculator(request):
 #         pass
 #     return render(request, 'calculator.html', data)
 
-
-def marksheet(request):
-
-    serviceDATA=service.objects.all()
+def incert(request):
+    total_marks=0
+    total_subjects=5
+    avg=0
+    percent=0
+    fn = marks()
+    
     data = {
-        'serviceData':serviceDATA
-    }
+           
+           'avg': 0,
+           'percent': 0,
+           'fn':fn
+             }
+    
+    if request.method == 'POST':
+            
+             # Replace "Student Name" with the actual name or method to get the name
+            # Assuming there are 5 subjects
 
-    # for a in serviceDATA:
-    #     print(a.name,a.lastname,a.email)
-    #     print(service)
-    fn = marks()  # Replace "Student Name" with the actual name or method to get the name
-    total_subjects = 5  # Assuming there are 5 subjects
+          
 
-    data = {
-        'avg': 0,
-        'percent': 0,
-        'fn': fn,
-    }
-
-    try:
-        if request.method == 'POST':
+            name= request.POST.get('name')
+            lastname=request.POST.get('lastname')
+            email=request.POST.get('email')
             sb1 = eval(request.POST.get('sub1'))
             sb2 = eval(request.POST.get('sub2'))
             sb3 = eval(request.POST.get('sub3'))
             sb4 = eval(request.POST.get('sub4'))
             sb5 = eval(request.POST.get('sub5'))
-
+            save = service(name=name,email=email,lastname=lastname,sub1=sb1,sub2=sb2,sub3=sb3,sub4=sb4,sub5=sb5)
+            save.save()
             total_marks = sb1 + sb2 + sb3 + sb4 + sb5
             avg = total_marks / total_subjects
             percent = (total_marks / (total_subjects * 100)) * 100
-
             data = {
                 'total_marks': total_marks,
                 'percent': percent,
-                'fn': fn
+                'fn': fn,
+                
             }
+    
+    return render(request, 'INCERTDATA.HTML',data)
 
-    except ValueError as e:
-        data['error'] = "Invalid input. Please enter numerical values for all subjects."
+
+def marksheet(request):
+    name =''
+    if request.method == 'POST':
+        name = request.POST.get('name', '')
+        results = service.objects.filter(name=name)
+    else:
+        results = HttpResponse("<h1>no data found</h1>")
+
+    data = {
+        'results': results,
+        'name': name,
+    }
 
     return render(request, 'marksheet.html', data)
+    
+   
+
+
+    # for a in serviceDATA:
+    #     print(a.name,a.lastname,a.email)
+    #     print(service)
+    
+
+    
+    
 
 
     

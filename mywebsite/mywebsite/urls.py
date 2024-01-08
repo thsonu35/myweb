@@ -26,7 +26,9 @@ urlpatterns = [
     path("loginsucc/",views.success, name='success'),
     path("calculator/",views.calculator,name='calculator'),
     path("evenodd/",views.evenoff,name='calculator'),
-    path("marksheet/",views.marksheet)
+    path("marksheet/",views.marksheet),
+    path("input/",views.incert),
+   
     # path("register/",views.register, name='contact'),
     # path("password/",views.password, name='password'),
     # path("login/",views.login, name='login'),
