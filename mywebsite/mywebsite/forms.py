@@ -1,11 +1,5 @@
 from django import forms
 
-class userForm(forms.Form):
-    name=forms.CharField()
-    email=forms.CharField()
-    psw1=forms.CharField()
-    psw2=forms.CharField()
-
 class calculate(forms.Form):
     number1=forms.IntegerField()
     number2=forms.IntegerField()

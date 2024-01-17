@@ -1,4 +1,4 @@
-<form method="GET"  >
+<form method="POST"  >
     {% csrf_token %}
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
@@ -212,13 +212,13 @@ input[type="submit"]:active
 
       <div class="inputBox"> 
 
-       <input placeholder="{{output}}" type="text" required> <i>Username</i> 
+       <input placeholder="{{output}}" type="text" name='username' required> <i>Username</i> 
 
       </div> 
 
       <div class="inputBox"> 
 
-       <input type="password" required> <i>Password</i> 
+       <input type="password" name='pass1' required> <i>Password</i> 
 
       </div> 
 

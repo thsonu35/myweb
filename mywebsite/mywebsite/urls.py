@@ -16,18 +16,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from mywebsite import views
+# from mywebsite import views
+from formapp2 import views
 
 
 urlpatterns = [
     path("secure/", admin.site.urls),
-    path("",views.form, name='regis'),
-    path("login/",views.login, name='index'),
-    path("loginsucc/",views.success, name='success'),
-    path("calculator/",views.calculator,name='calculator'),
-    path("evenodd/",views.evenoff,name='calculator'),
-    path("marksheet/",views.marksheet),
-    path("input/",views.incert),
+    path("",views.newuser, name='regis'),
+    path("login/",views.custom_login, name='index'),
+    # path("loginsucc/",views.success, name='success'),
+    # path("calculator/",views.calculator,name='calculator'),
+    # path("evenodd/",views.evenoff,name='calculator'),
+    # path("marksheet/",views.marksheet),
+    # path("input/",views.incert),
    
     # path("register/",views.register, name='contact'),
     # path("password/",views.password, name='password'),
